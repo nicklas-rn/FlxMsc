@@ -1,0 +1,104 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <!-- Add meta tags for mobile and IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script src="https://kit.fontawesome.com/9add2ee5bc.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+
+		var transactionIdCookie = JSON.parse(getCookie('transactionIdCookie'))
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar closed" id="navbar">
+        <div class="logo">
+            <img src="/media/logo/logo.png">
+        </div>
+            <a class="shopping-cart" href="{% url 'cart' %}">
+                <i class="fas fa-circle shopping-cart-circle"></i><p class="shopping-cart-number">{{cartItems}}</p><i class="fas fa-shopping-cart"></i></a>
+        <div class="menu-btn">
+            <div class="menu-btn__burger"></div>
+        </div>
+        <br>
+        <ul id="pagelinks" class="pagelinks">
+            <li><a class="pagelink" href="{% url 'home' %}">Home</a></li>
+            <li><a class="pagelink" href="/beats/nokeyword/">Beats</a></li>
+            <li><a class="pagelink" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="pagelink" href="{% url 'mybeats' %}">My Beats</a></li>
+            <li><a class="pagelink cart-pagelink" href="{% url 'cart' %}">Cart</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+
+
+        {% block content %}
+
+        {% endblock %}
+
+
+    </main>
+
+    <article class="join">
+        <h2>Be the first to listen to new releases</h2>
+        <p>Get notified by mail when I release new beats!</p>
+        <form action="/mail/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <input type="email" class="email" name="email" placeholder="Type email & hit submit" required>
+            <input type="submit" value="Submit" class="submit">
+            <input type="checkbox" name="agree" class="agree" id="agree" required>
+            <label for="agree">I agree the <a href="/terms_of_use" class="terms_of_use">terms and conditions</a></label>
+        </form>
+    </article>
+
+    <footer>
+        <p class="copyright">
+            <a href="/dsgvo" class="footer_link dsgvo">DSGVO</a>
+            <a href="/terms_of_use" class="footer_link about">About</a>
+            <a href="mailto:flxmscbeats@gmail.com" class="contact">Contact</a>
+        </p>
+    </footer>
+
+
+
+    <script src="{% static 'shop/beats_animations.js' %}"></script>
+</body>
+</html>

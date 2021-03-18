@@ -1,0 +1,42 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="page-title releases-title">Latest Releases</h3>
+<article class="slider-container">
+    <div class="slider">
+        <input type="radio" name="testimonial" id="t-1">
+        <input type="radio" name="testimonial" id="t-2">
+        <input type="radio" name="testimonial" id="t-3" checked>
+        <input type="radio" name="testimonial" id="t-4">
+        <input type="radio" name="testimonial" id="t-5">
+        <div class="testimonials">
+            {% for beat in beats %}
+            <label class="item" for="t-{{ forloop.counter }}">
+                <div class="beat-thumbnail-container">
+                    <img class="beat-thumbnail" src="{{ beat.thumbnail.url }}">
+                    <h2 class="beat-title">{{beat.title}}</h2>
+                </div>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+</article>
+<h3 class="page-title">Find the perfect Beat</h3>
+<article class="page-links">
+    {% for page_link in page_links %}
+    <div class="page-link">
+        <div class="page-link-thumbnail-container">
+            <img class="page-link-thumbnail" src="{{ page_link.thumbnail.url }}">
+        </div>
+        <h2 class="page-link-title">{{ page_link.title }}</h2>
+    </div>
+    {% endfor %}
+</article>
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/home_style.css' %}">
+<script src="{% static 'shop/home_animations.js' %}"></script>
+<script src="{% static 'shop/animations.js' %}"></script>
+
+{% endblock %}

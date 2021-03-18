@@ -1,0 +1,102 @@
+.cart-title{
+    padding-left: 2%;
+}
+
+.cart-content{
+    border-top: 1px solid grey;
+    padding-top: 10px;
+    margin-top: 15px;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.cart-item{
+    padding-bottom: 10px;
+}
+
+.item-price-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.beat-title{
+    display: inline-block;
+    font-size: 20;
+    font-weight: 400;
+}
+
+.beat-price{
+    display: inline-block;
+    font-size: 18;
+    float: right;
+}
+
+.beat-license{
+    display: inline-block;
+}
+
+.remove-button{
+    display: inline-block;
+    font-size: 15;
+    float: right;
+    cursor: pointer;
+    color: grey;
+    background: none;
+    border: none;
+}
+
+.remove-button:hover{
+    text-decoration: underline;
+}
+
+.remove-icon{
+    padding-right: 3px;
+    font-size: 14;
+}
+
+.total-container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+.total{
+    font-size: 20;
+    display: inline-block;
+    color: #00EE38;
+    font-weight: 600;
+}
+
+.total-price{
+    float: right;
+}
+
+.error-container{
+    display: none;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.error-message{
+    color: red;
+    font-size: 22;
+}
+
+@media screen and (min-width: 1000px) {
+
+    main{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+
+    main{
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}

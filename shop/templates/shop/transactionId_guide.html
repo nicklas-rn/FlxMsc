@@ -1,0 +1,22 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="back_link_container">
+    <a class="back_link" href="{% url 'mybeats' %}"><i class="fas fa-chevron-left back-link-icon"></i>Back My Beats</a>
+</section>
+
+<h3 class="page-title" xmlns="http://www.w3.org/1999/html">How to find the transaction Id</h3>
+
+<article class="transactionId-guide">
+    <p class="guide-step">1. Click on 'last activities'</p>
+    <p class="guide-step">2. Search for your order at my Website</p>
+    <p class="guide-step">3. Look for the transaction Id (or the transaction code)</p>
+</article>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/transactionId_guide_style.css' %}">
+<script src="{% static 'shop/animations.js' %}"></script>
+
+{% endblock %}

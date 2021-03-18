@@ -1,0 +1,51 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<h3 class="page-title summary-title">Summary</h3>
+<h4 class="thank-you-text">Thank you for your purchase!</h4>
+
+<article class="summary-content">
+    {% for item in order_items %}
+        <div class="summary-item">
+            <p class="beat-title">{{ item.beat.title }}</p>
+            <p class="beat-license">{{ item.license }}</p>
+            <div class="download-container beat-files">
+                <p class="download-description beat-downloads-description">Audio Files</p>
+                <div class="download-button mp3">
+                    <i class="fas fa-arrow-down download-icon"></i>
+                    <a class="download-link beat-mp3" href="{{ item.beat.mp3_file.url }}" download="{{ item.beat.mp3_file.url }}">MP3</a>
+                </div>
+                <div class="download-button wav">
+                    <i class="fas fa-arrow-down download-icon"></i>
+                    <a class="download-link beat-wav" href="{{ item.beat.wav_file.url }}" download="{{ item.beat.wav_file.url }}">WAV</a>
+                </div>
+            </div>
+            <div class="download-container license-file">
+                <p class="download-description license-download-description">License File</p>
+                <div class="download-button license-pdf">
+                    <i class="fas fa-arrow-down download-icon"></i>
+                    <a class="download-link beat-license-pdf" href="{{ item.license_pdf.url }}" download="{{ item.license_pdf.url }}">PDF</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</article>
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/summary_style.css' %}">
+<script src="{% static 'shop/animations.js' %}"></script>
+
+<script>
+    window.onload = function clearCookieCart(){
+        console.log('Clearing cookie cart')
+
+        cart = {}
+        console.log('CART:', cart)
+        document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+    }
+</script>
+
+{% endblock %}

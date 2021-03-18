@@ -1,0 +1,22 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="page-title" xmlns="http://www.w3.org/1999/html">My Beats</h3>
+
+<article class="mybeats">
+    <p>Enter the PayPal transaction Id of your order to download the beats you bought</p>
+    <a href="{% url 'transactionId_guide' %}" class="transactionId-guide-link">How do I find the PayPal transaction Id of an order?</a>
+    <div class="input">
+        <input type="text" class="transactionId-input" id="transactionId-input" placeholder="Type Transaction Id & hit enter" required>
+        <button class="enter" onclick="addCookieTransactionIdMyBeats()">Enter</button>
+    </div>
+</article>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/mybeats_style.css' %}">
+<script src="{% static 'shop/mybeats_animations.js' %}"></script>
+<script src="{% static 'shop/animations.js' %}"></script>
+
+{% endblock %}

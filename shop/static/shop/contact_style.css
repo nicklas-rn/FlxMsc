@@ -1,0 +1,71 @@
+label{
+    display: block;
+}
+
+.contact-form{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+p{
+    font-size: 19;
+}
+
+input{
+    border-radius: 5px;
+    background: #e0e0e0;
+    border: 2px solid #555555;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    height: 30px;
+    width: 90%;
+    font-size: 16;
+}
+
+textarea{
+    border-radius: 5px;
+    background: #e0e0e0;
+    border: 2px solid #555555;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    height: 200px;
+    width: 100%;
+    font-size: 16;
+}
+
+button{
+  width: 23%;
+  height: 30px;
+  background: #FF3200;
+  border-radius: 11px;
+  border: none;
+  font-size: 17;
+  font-weight: 100;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+
+    main{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    input{
+        width: 30%;
+    }
+
+    textarea{
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+
+    main{
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}

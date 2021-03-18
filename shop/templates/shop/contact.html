@@ -1,0 +1,21 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="page-title" xmlns="http://www.w3.org/1999/html">Contact</h3>
+
+<article class="contact-form">
+    <form role="form" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+</article>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/contact_style.css' %}">
+<script src="{% static 'shop/mybeats_animations.js' %}"></script>
+<script src="{% static 'shop/animations.js' %}"></script>
+
+{% endblock %}

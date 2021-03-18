@@ -1,0 +1,112 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+<article class="beat_detail" id="beat_detail">
+        <section class="back_link_container">
+            <a class="back_link" href="/beats/nokeyword/"><i class="fas fa-chevron-left back-link-icon"></i>Back to all beats</a>
+        </section>
+        <div class="beat">
+            <div class="video-container-wrapper">
+                <div class="video_container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/{{ beat.video }}"
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                            encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="beat-description-container">
+            <h3 class="beat-title">{{beat.title}}</h3>
+            <i class="fas fa-sliders-h property-icon"></i><p class="beat-property bpm">{{ beat.bpm }} BPM</p>
+            <i class="fas fa-play property-icon"></i><p class="beat-property beat-length">{{ beat.beat_length }}</p>
+            <i class="fas fa-music property-icon"></i><p class="beat-property tone-type">{{ beat.tone_type }}</p>
+            </div>
+        </div>
+        <div class="license-container">
+        <h4 class="license-header">Pick a License</h4>
+
+        {% for license in license_list %}
+                <div class="license">
+                    <div class="license-top-row">
+                        <p class="license-title">{{license.title}}</p>
+                        <button data-beat="{{beat.id}}" data-license="{{license.title}}" data-action="add" class="license-price-button update-cart">
+                            <i class="fas fa-cart-arrow-down cart-add-icon"></i>Add to cart {{license.price}}€
+                        </button>
+                    </div>
+                    <div class="license-properties" id="license-properties-{{ forloop.counter0 }}">
+                            <div class="license-property">
+                                <i class="far fa-file-audio"></i>
+                                <p class="license-property-description">File formats: MP3 320-kBit/s & WAV 24-Bit</p>
+                            </div>
+                            <div class="license-property spacer">
+                            </div>
+
+                            <div class="license-property">
+                                <i class="fas fa-layer-group license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_distribution_copies}}</p>
+                                <p class="license-property-description">Distribution copies</p>
+                            </div>
+                            <div class="license-property">
+                                <i class="fas fa-download license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_free_downloads}}</p>
+                                <p class="license-property-description">Free downloads</p>
+                            </div>
+
+
+                            <div class="license-property">
+                                <i class="fas fa-play-circle license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_audio_streams}}</p>
+                                <p class="license-property-description">Audio streams</p>
+                            </div>
+                            <div class="license-property">
+                                <i class="fas fa-video license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_music_videos}}</p>
+                                <p class="license-property-description">Music videos</p>
+                            </div>
+
+
+                            <div class="license-property">
+                                <i class="fas fa-film license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_non_monetized_video_streams}}</p>
+                                <p class="license-property-description">Non monetized video streams</p>
+                            </div>
+                            <div class="license-property">
+                                <i class="fas fa-coins license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_monetized_video_streams}}</p>
+                                <p class="license-property-description">Monetized video stream(s)</p>
+                            </div>
+
+
+                            <div class="license-property license-property-bottom-row">
+                                <i class="fas fa-broadcast-tower license-property-icon"></i>
+                                <p class="license-property-description">Broadcoasting Rights at </p>
+                                <p class="license-property-value">{{license.num_radio_stations}}</p>
+                                <p class="license-property-description">Radio Stations</p>
+                            </div>
+                            <div class="license-property license-property-bottom-row">
+                                <i class="fas fa-microphone-alt license-property-icon"></i>
+                                <p class="license-property-value">{{license.num_not_for_profit_performances}}</p>
+                                <p class="license-property-description">Non profit performances</p>
+                            </div>
+
+                    </div>
+                    <button onclick="showUsageTerms({{forloop.counter0}})" class="usage-terms-toggle-container usage-terms-show-container">
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                        <p class="usage-terms-toggle">Show usage terms</p>
+                    </button>
+                    <button onclick="hideUsageTerms({{forloop.counter0}})"  class="usage-terms-toggle-container usage-terms-hide-container">
+                        <i class="fas fa-chevron-up toggle-icon"></i>
+                        <p class="usage-terms-toggle">Hide usage terms</p>
+                    </button>
+                </div>
+        {% endfor %}
+        </div>
+
+</article>
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/beat_detail_style.css' %}">
+<script src="{% static 'shop/animations.js' %}"></script>
+<script src="{% static 'shop/beat_detail_animations.js' %}"></script>
+
+{% endblock %}
+

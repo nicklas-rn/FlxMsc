@@ -1,0 +1,56 @@
+.mybeats{
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 18;
+}
+
+.transactionId-guide-link{
+    color: 0076FF;
+    font-size: 14;
+}
+
+.input{
+    margin-top: 30px;
+}
+
+.transactionId-input {
+  border-radius: 15px;
+  background: #424242;
+  border: 0px;
+  border-radius: 11px;
+  height: 30px;
+  width: 75%;
+  padding-left: 1.5%;
+  font-size: 16;
+  outline: none;
+  color: white;
+}
+
+.enter{
+  width: 23%;
+  height: 30px;
+  background: #FF3200;
+  border-radius: 11px;
+  border: none;
+  font-size: 17;
+  font-weight: 100;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+
+    main{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+
+    main{
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}

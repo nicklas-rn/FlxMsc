@@ -1,0 +1,30 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3 class="page-title">Beats</h3>
+<article class="searchbar_wrapper">
+    <input type="text" class="search" id="search_beats" onkeyup="searchBeats()" placeholder="Search for a beat">
+    <p class="description search_description" id="search_beats_description">Search for a beat, for a type or an artist.
+    </p>
+</article>
+
+<article class="beats" id="beats">
+    {% for beat in beats %}
+        <div class="beat">
+            <div class="beat-thumbnail-container">
+                <img class="beat-thumbnail" src="{{ beat.thumbnail.url }}">
+            </div>
+            <h5 class="beat-title">{{beat.title}}</h5>
+            <h6 class="beat-keywords" style="display:none;">{{beat.keywords}}</h6>
+            <p class="bpm">{{ beat.bpm }} BPM</p>
+        </div>
+    {% endfor %}
+</article>
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/beats_style.css' %}">
+<script src="{% static 'shop/beats_animations.js' %}"></script>
+<script src="{% static 'shop/animations.js' %}"></script>
+
+{% endblock %}
